@@ -1,5 +1,6 @@
 numpy == 2.2.5
 scikit-learn == 1.6.1
 flask
+xgboost
 gunicorn
 protobuf == 3.20.1
