@@ -50,7 +50,7 @@ def predict():
         # standardize the input data
         std_data = scaler.transform(input_data_reshaped)
         
-        prediction = model.predict(std_data)[0]
+        result = model.predict(std_data)[0]
 
     except Exception as e:
         result = f"Prediction error: {e}"
