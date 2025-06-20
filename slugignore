@@ -1,0 +1,14 @@
+*.ipynb
+*.csv
+*.xlsx
+*.sav
+*.pkl
+*.zip
+__pycache__/
+.ipynb_checkpoints/
+*.pt
+*.h5
+venv/
+.env/
+*.log
+*.txt
