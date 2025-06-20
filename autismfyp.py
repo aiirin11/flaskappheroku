@@ -3,11 +3,11 @@ import pickle
 import numpy as np
 
 
-model_path = "C:/Users/airin/Downloads/AUTISM/flask setup/autismfyp_model.sav"  
+model_path = "autismfyp_model.sav"  
 model = pickle.load(open(model_path, 'rb'))
 
 # Assuming you have a scaler saved as well
-scaler_path = "C:/Users/airin/Downloads/AUTISM/flask setup/autismscaler.sav"
+scaler_path = "autismscaler.sav"
 scaler = pickle.load(open(scaler_path, 'rb'))
 
 app = Flask(__name__)
