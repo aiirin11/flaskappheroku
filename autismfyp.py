@@ -1,7 +1,25 @@
 from flask import Flask, request, jsonify, render_template
 import pickle
 import numpy as np
+import os
+import requests
 
+def download_file(url, filename):
+    if not os.path.exists(filename):
+        print(f"Downloading {filename}...")
+        r = requests.get(url)
+        with open(filename, 'wb') as f:
+            f.write(r.content)
+
+# Use your actual Hugging Face raw URLs here
+MODEL_URL = "https://huggingface.co/aiirin11/autismflaskmodel/raw/main/autismfyp_model.sav"
+SCALER_URL = "https://huggingface.co/aiirin11/autismflaskmodel/raw/main/autismscaler.sav"
+
+download_file(MODEL_URL, "autismfyp_model.sav")
+download_file(SCALER_URL, "autismscaler.sav")
+
+model = pickle.load(open("autismfyp_model.sav", 'rb'))
+scaler = pickle.load(open("autismscaler.sav", 'rb'))
 
 model_path = "autismfyp_model.sav"  
 model = pickle.load(open(model_path, 'rb'))
@@ -50,12 +68,12 @@ def predict():
         # standardize the input data
         std_data = scaler.transform(input_data_reshaped)
         
-        result = model.predict(std_data)[0]
+        prediction = model.predict(std_data)[0]
 
     except Exception as e:
         result = f"Prediction error: {e}"
 
-    return render_template('index3.html', result=result)
+    return render_template('index3.html', result=prediction)
 
 if __name__ == '__main__':
     app.run(debug=True)
