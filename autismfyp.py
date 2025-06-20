@@ -55,7 +55,7 @@ def predict():
     except Exception as e:
         result = f"Prediction error: {e}"
 
-    return render_template('index3.html', result=prediction)
+    return render_template('index3.html', result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
